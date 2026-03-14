@@ -16,3 +16,37 @@ body {
   color: var(--color-foreground);
   font-family: var(--font-unbounded), sans-serif;
 }
+
+.card-interactive {
+  transform-style: preserve-3d;
+  transition: transform 0.25s ease;
+}
+
+.card-bg {
+  transform: translateZ(-40px);
+}
+
+.lab-logo {
+  transform: translateZ(40px);
+}
+
+.card-glow {
+  background: radial-gradient(
+    circle at center,
+    rgba(255,255,255,0.15),
+    transparent 60%
+  );
+}
+
+.card-light {
+  background: radial-gradient(
+    circle at var(--x) var(--y),
+    rgba(255,255,255,0.25),
+    transparent 40%
+  );
+  transition: opacity 0.3s;
+}
+
+.lab-logo{
+  transform: translateZ(40px);
+}

@@ -278,9 +278,45 @@ useGSAP(() => {
           <div className="cards-container relative w-full max-w-4xl mx-auto px-6 pt-[10vh] pb-[20vh] z-20">
             {labs.map((lab, i) => (
               <div key={lab.id} className="card-wrapper w-full mb-[80vh] last:mb-0">
-                <div className="relative w-full h-[550px] overflow-hidden border border-white/10 bg-black/80 group transition-all duration-700 hover:border-white/30 shadow-2xl">
+                <div
+                  className="card-interactive relative w-full h-[550px] overflow-hidden border border-white/10 bg-black/80 group transition-all duration-700 hover:border-white/30 shadow-2xl transform-gpu"
+                  onMouseMove={(e) => {
+                    const rect = e.currentTarget.getBoundingClientRect()
+
+                    const x = (e.clientX - rect.left) / rect.width
+                    const y = (e.clientY - rect.top) / rect.height
+
+                    const rotateX = (y - 0.5) * 22
+                    const rotateY = (x - 0.5) * -22
+
+                    const xPos = e.clientX - rect.left
+                    const yPos = e.clientY - rect.top
+
+                    e.currentTarget.style.setProperty("--x", `${xPos}px`)
+                    e.currentTarget.style.setProperty("--y", `${yPos}px`)
+
+                    gsap.to(e.currentTarget, {
+                      rotateX,
+                      rotateY,
+                      scale: 1.02,
+                      transformPerspective: 1200,
+                      duration: 0.2,
+                      ease: "power2.out"
+                    })
+                  }}
+
+                  onMouseLeave={(e) => {
+                    gsap.to(e.currentTarget, {
+                      rotateX: 0,
+                      rotateY: 0,
+                      scale: 1,
+                      duration: 0.5,
+                      ease: "power3.out"
+                    })
+                  }}
+                >
                   
-                  <div className="absolute inset-0 z-0">
+                  <div className="absolute inset-0 z-0 card-parallax">
                     {lab.video_id ? (
                       <video
                         ref={(el) => (videoRefs.current[i] = el)}
@@ -291,7 +327,7 @@ useGSAP(() => {
                         muted
                         playsInline
                         style={{ willChange: 'transform' }} 
-                        className="w-full h-full object-cover opacity-35 grayscale group-hover:grayscale-0 group-hover:opacity-70 transition-all duration-1000 scale-105 group-hover:scale-100"
+                        className="card-bg w-full h-full object-cover opacity-35 grayscale group-hover:grayscale-0 group-hover:opacity-70 transition-all duration-1000 scale-110 group-hover:scale-100"
                       />
                     ) : (
                       <img 
@@ -301,13 +337,22 @@ useGSAP(() => {
                         className="w-full h-full object-cover opacity-30 grayscale group-hover:grayscale-0 group-hover:opacity-50 transition-all duration-1000"
                       />
                     )}
+
+                    {/* GLOW */}
+                    <div className="card-glow absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+                    {/* GRADIENT */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
                   </div>
 
                   <div className="relative z-10 h-full p-16 flex flex-col justify-between">
                     <div className="flex justify-between items-start">
                       <span className="text-xs font-mono text-white/40 uppercase tracking-[0.4em] block">Archive // 0{i+1}</span>
-                      <img src={singularityLogo} alt="" className="w-8 h-8 opacity-20" />
+                      <img
+                        src={singularityLogo}
+                        alt=""
+                        className="lab-logo w-8 h-8 opacity-20 transition-all duration-500 group-hover:opacity-80 group-hover:translate-z-10"
+                      />
                     </div>
 
                     <div>
