@@ -26,7 +26,7 @@ export default function Hub() {
   const router = useRouter();
   
   // FIXED: Explicitly tell TypeScript this array holds video elements
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const videoRefs = useRef<Record<number, HTMLVideoElement | null>>({});
 
   // FIXED: Tell TypeScript that 'index' is a number
   const playVideo = (index: number) => {
