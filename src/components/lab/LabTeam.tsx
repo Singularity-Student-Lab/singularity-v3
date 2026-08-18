@@ -4,20 +4,23 @@ import { useRef } from "react"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { Github, Linkedin } from "lucide-react"
 
 gsap.registerPlugin(ScrollTrigger)
 
 interface Executive {
   name: string
   role: string
-  field: string
   image?: string
+  github?: string
+  linkedin?: string
 }
 
 interface Member {
   name: string
-  field: string
   year: string
+  github?: string
+  linkedin?: string
 }
 
 interface Props {
@@ -151,9 +154,20 @@ export default function LabTeam({ executives, members, logo, color }: Props) {
                     />
                   </div>
 
-                  <p className="text-white/60 text-sm mt-2">
-                    {e.field}
-                  </p>
+                  {(e.github || e.linkedin) && (
+                    <div className="flex justify-center md:justify-start gap-4 mt-3">
+                      {e.github && (
+                        <a href={e.github} target="_blank" rel="noreferrer" className="text-white/40 hover:text-white transition-colors">
+                          <Github size={18} />
+                        </a>
+                      )}
+                      {e.linkedin && (
+                        <a href={e.linkedin} target="_blank" rel="noreferrer" className="text-white/40 hover:text-white transition-colors">
+                          <Linkedin size={18} />
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
 
                 {/* 🔥 Bottom Accent Line */}
@@ -179,19 +193,34 @@ export default function LabTeam({ executives, members, logo, color }: Props) {
             {members.map((m, i) => (
               <div
                 key={i}
-                className="member-card border border-white/10 p-5 bg-black/60 transition-all hover:border-white/30 hover:bg-white/[0.03] hover:-translate-y-1"
+                className="member-card border border-white/10 p-5 bg-black/60 transition-all hover:border-white/30 hover:bg-white/[0.03] hover:-translate-y-1 relative"
               >
-                <h4 className="font-semibold text-base md:text-lg">
-                  {m.name}
-                </h4>
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h4 className="font-semibold text-base md:text-lg">
+                      {m.name}
+                    </h4>
 
-                <p className="text-white/60 text-xs md:text-sm mt-1">
-                  {m.field}
-                </p>
-
-                <p className="text-white/40 text-[10px] md:text-xs mt-2 uppercase tracking-wider">
-                  {m.year}
-                </p>
+                    <p className="text-white/40 text-[10px] md:text-xs mt-2 uppercase tracking-wider">
+                      {m.year}
+                    </p>
+                  </div>
+                  
+                  {(m.github || m.linkedin) && (
+                    <div className="flex gap-3">
+                      {m.github && (
+                        <a href={m.github} target="_blank" rel="noreferrer" className="text-white/40 hover:text-white transition-colors">
+                          <Github size={16} />
+                        </a>
+                      )}
+                      {m.linkedin && (
+                        <a href={m.linkedin} target="_blank" rel="noreferrer" className="text-white/40 hover:text-white transition-colors">
+                          <Linkedin size={16} />
+                        </a>
+                      )}
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>
