@@ -222,10 +222,10 @@ export default function AboutPage() {
             <h2 className="text-sm font-mono tracking-[0.4em] text-white/40 uppercase w-48 shrink-0 pt-6">
               Chief Executive
             </h2>
-            <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6 group p-4 -ml-4 md:p-6 md:-ml-6 rounded-2xl border border-transparent hover:border-white/5 hover:bg-white/[0.02] transition-all duration-500 w-full max-w-2xl cursor-pointer">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6 group p-4 -ml-4 md:p-6 md:-ml-6 rounded-2xl border border-transparent hover:border-white/5 hover:bg-white/[0.02] transition-all duration-500 w-full max-w-2xl">
               <div className="w-20 h-20 rounded-full overflow-hidden border border-white/20 shrink-0">
                 <img 
-                  src="/team/supreet.png" 
+                  src="https://res.cloudinary.com/dtlder1hw/image/upload/v1787073660/team/supreet.png" 
                   alt="Supreet Kothuri" 
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
                 />

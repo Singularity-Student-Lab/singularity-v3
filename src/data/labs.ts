@@ -40,14 +40,14 @@ export const labs: Lab[] = [
       {
         name: "B Md Fawaz",
         role: "Executive Lead",
-        image: "/team/fawaz.png",
+        image: "https://res.cloudinary.com/dtlder1hw/image/upload/v1787073654/team/fawaz.png",
         github: "https://github.com/f4w4z",
         linkedin: "https://www.linkedin.com/in/fawaaaaz/"
       },
       {
         name: "Lavjeet Kumar Rai",
         role: "Executive",
-        image: "/team/lavjeet.png",
+        image: "https://res.cloudinary.com/dtlder1hw/image/upload/v1787073655/team/lavjeet.png",
         github: "https://github.com/lavjeetrai",
         linkedin: "https://www.linkedin.com/in/lavjeet-rai/"
       }
@@ -79,7 +79,7 @@ export const labs: Lab[] = [
       {
         name: "Baratam Praneeth Gupta",
         role: "Executive Lead",
-        image: "/team/praneeth_gupta.jpg",
+        image: "https://res.cloudinary.com/dtlder1hw/image/upload/v1787073657/team/praneeth_gupta.jpg",
         github: "https://github.com/Praneeth0910",
         linkedin: "https://www.linkedin.com/in/baratam-praneeth-gupta-baba24361?utm_source=share_via&utm_content=profile&utm_medium=member_android"
       }
@@ -105,12 +105,12 @@ export const labs: Lab[] = [
       {
         name: "Pranav Sikka",
         role: "Executive Lead",
-        image: "/team/pranav.png"
+        image: "https://res.cloudinary.com/dtlder1hw/image/upload/v1787073656/team/pranav.png"
       },
       {
         name: "Shambo Chakraborty",
         role: "Executive",
-        image: "/team/shambo.jpg",
+        image: "https://res.cloudinary.com/dtlder1hw/image/upload/v1787073658/team/shambo.jpg",
         github: "https://github.com/shambochakraborty10-stack",
         linkedin: "https://www.linkedin.com/in/shambo-chakraborty-480747395?utm_source=share_via&utm_content=profile&utm_medium=member_android"
       }
@@ -131,14 +131,14 @@ export const labs: Lab[] = [
       {
         name: "Anmol Sharma",
         role: "Executive Lead",
-        image: "/team/anmol.png",
+        image: "https://res.cloudinary.com/dtlder1hw/image/upload/v1787073653/team/anmol.png",
         github: "https://github.com/Gostmennnnn",
         linkedin: "https://www.linkedin.com/in/Anmol-sharma-ba0b6a387"
       },
       {
         name: "Aditya Joshi",
         role: "Executive",
-        image: "/team/aditya.png",
+        image: "https://res.cloudinary.com/dtlder1hw/image/upload/v1787073651/team/aditya.jpg",
         github: "https://github.com/adityajoshi18vk-art",
         linkedin: "https://www.linkedin.com/in/aditya-joshi-659001350/"
       }
@@ -164,14 +164,14 @@ export const labs: Lab[] = [
       {
         name: "Yuvraj Singh",
         role: "Executive Lead",
-        image: "/team/yuvraj.jpg",
+        image: "https://res.cloudinary.com/dtlder1hw/image/upload/v1787073660/team/yuvraj.jpg",
         github: "https://github.com/YUVRAJ-SINGH-3178",
         linkedin: "https://www.linkedin.com/in/yuvraj-singh-3178saturn/"
       },
       {
         name: "Praneeth",
         role: "Executive",
-        image: "/team/praneeth.jpg",
+        image: "https://res.cloudinary.com/dtlder1hw/image/upload/v1787073657/team/praneeth.jpg",
         github: "https://github.com/praneethzz",
         linkedin: "https://www.linkedin.com/in/praneeth-zz-985638391?utm_source=share_via&utm_content=profile&utm_medium=member_android"
       }
@@ -199,7 +199,7 @@ export const labs: Lab[] = [
       {
         name: "Agastya Pandey",
         role: "Executive Lead",
-        image: "/team/agastya_pandey.jpg"
+        image: "https://res.cloudinary.com/dtlder1hw/image/upload/v1787073651/team/agastya_pandey.jpg"
       }
     ],
     members: [
@@ -221,7 +221,7 @@ export const labs: Lab[] = [
       {
         name: "Supreet Kothuri",
         role: "Executive Lead",
-        image: "/team/supreet.png"
+        image: "https://res.cloudinary.com/dtlder1hw/image/upload/v1787073660/team/supreet.png"
       }
     ],
     members: []

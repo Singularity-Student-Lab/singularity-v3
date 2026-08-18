@@ -157,12 +157,12 @@ export default function LabTeam({ executives, members, logo, color }: Props) {
                   {(e.github || e.linkedin) && (
                     <div className="flex justify-center md:justify-start gap-4 mt-3">
                       {e.github && (
-                        <a href={e.github} target="_blank" rel="noreferrer" className="text-white/40 hover:text-white transition-colors">
+                        <a href={e.github} target="_blank" rel="noopener noreferrer" aria-label={`${e.name}'s GitHub profile`} className="text-white/40 hover:text-white transition-colors">
                           <Github size={18} />
                         </a>
                       )}
                       {e.linkedin && (
-                        <a href={e.linkedin} target="_blank" rel="noreferrer" className="text-white/40 hover:text-white transition-colors">
+                        <a href={e.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${e.name}'s LinkedIn profile`} className="text-white/40 hover:text-white transition-colors">
                           <Linkedin size={18} />
                         </a>
                       )}
@@ -209,12 +209,12 @@ export default function LabTeam({ executives, members, logo, color }: Props) {
                   {(m.github || m.linkedin) && (
                     <div className="flex gap-3">
                       {m.github && (
-                        <a href={m.github} target="_blank" rel="noreferrer" className="text-white/40 hover:text-white transition-colors">
+                        <a href={m.github} target="_blank" rel="noopener noreferrer" aria-label={`${m.name}'s GitHub profile`} className="text-white/40 hover:text-white transition-colors">
                           <Github size={16} />
                         </a>
                       )}
                       {m.linkedin && (
-                        <a href={m.linkedin} target="_blank" rel="noreferrer" className="text-white/40 hover:text-white transition-colors">
+                        <a href={m.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${m.name}'s LinkedIn profile`} className="text-white/40 hover:text-white transition-colors">
                           <Linkedin size={16} />
                         </a>
                       )}
