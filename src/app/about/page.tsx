@@ -120,7 +120,7 @@ export default function AboutPage() {
             <h2 className="text-sm font-mono tracking-[0.4em] text-white/40 uppercase w-48 shrink-0 pt-6">
               Founding Student
             </h2>
-            <div className="flex items-center gap-6 group p-4 -ml-4 md:p-6 md:-ml-6 rounded-2xl border border-transparent hover:border-white/5 hover:bg-white/[0.02] transition-all duration-500 w-full max-w-2xl cursor-pointer">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6 group p-4 -ml-4 md:p-6 md:-ml-6 rounded-2xl border border-transparent hover:border-white/5 hover:bg-white/[0.02] transition-all duration-500 w-full max-w-2xl cursor-pointer">
               <div className="w-24 h-24 rounded-full overflow-hidden border border-white/20 shrink-0">
                 <img 
                   src="https://res.cloudinary.com/djtemmctt/image/upload/v1773943803/jayanth_dtqvzg.jpg" 
@@ -135,7 +135,7 @@ export default function AboutPage() {
                 <p className="text-white/50 text-sm md:text-base mt-2">
                   Founder & Lead
                 </p>
-                <div className="flex gap-5 mt-4">
+                <div className="flex justify-center sm:justify-start gap-5 mt-4">
                   <a href="https://jayanthramakrishnan.online" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white hover:scale-110 transition-all" aria-label="Personal Website">
                     <Globe size={20} />
                   </a>
@@ -158,7 +158,7 @@ export default function AboutPage() {
               Founding Faculty
             </h2>
             <div className="flex flex-col gap-4 w-full max-w-2xl">
-              <div className="flex items-center gap-6 group p-4 -ml-4 md:p-6 md:-ml-6 rounded-2xl border border-transparent hover:border-white/5 hover:bg-white/[0.02] transition-all duration-500 cursor-pointer">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6 group p-4 -ml-4 md:p-6 md:-ml-6 rounded-2xl border border-transparent hover:border-white/5 hover:bg-white/[0.02] transition-all duration-500 cursor-pointer">
                 <div className="w-20 h-20 rounded-full overflow-hidden border border-white/20 shrink-0">
                   <img 
                     src="https://res.cloudinary.com/djtemmctt/image/upload/v1774293381/tomy_rbpm0i.jpg" 
@@ -175,7 +175,7 @@ export default function AboutPage() {
                   </p>
                 </div>
               </div>
-              <div className="flex items-center gap-6 group p-4 -ml-4 md:p-6 md:-ml-6 rounded-2xl border border-transparent hover:border-white/5 hover:bg-white/[0.02] transition-all duration-500 cursor-pointer">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6 group p-4 -ml-4 md:p-6 md:-ml-6 rounded-2xl border border-transparent hover:border-white/5 hover:bg-white/[0.02] transition-all duration-500 cursor-pointer">
                 <div className="w-20 h-20 rounded-full overflow-hidden border border-white/20 shrink-0">
                   <img 
                     src="https://res.cloudinary.com/djtemmctt/image/upload/v1774293381/HOD_ztx99a.jpg" 
@@ -199,7 +199,7 @@ export default function AboutPage() {
             <h2 className="text-sm font-mono tracking-[0.4em] text-white/40 uppercase w-48 shrink-0 pt-6">
               Faculty Advisor
             </h2>
-            <div className="flex items-center gap-6 group p-4 -ml-4 md:p-6 md:-ml-6 rounded-2xl border border-transparent hover:border-white/5 hover:bg-white/[0.02] transition-all duration-500 w-full max-w-2xl cursor-pointer">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6 group p-4 -ml-4 md:p-6 md:-ml-6 rounded-2xl border border-transparent hover:border-white/5 hover:bg-white/[0.02] transition-all duration-500 w-full max-w-2xl cursor-pointer">
               <div className="w-20 h-20 rounded-full overflow-hidden border border-white/20 shrink-0">
                 <img 
                   src="https://res.cloudinary.com/djtemmctt/image/upload/v1774293381/Priyanka_qcbe5c.jpg" 
@@ -248,7 +248,7 @@ export default function AboutPage() {
                 desc: "From publishing papers to building MVPs — we incubate ideas that can evolve into startups, research publications, or community-focused solutions."
               }
             ].map((feature, i) => (
-              <div key={i} className="why-card group relative p-10 bg-white/[0.02] border border-white/10 hover:bg-white/[0.04] transition-colors duration-500">
+              <div key={i} className="why-card group relative p-6 md:p-10 bg-white/[0.02] border border-white/10 hover:bg-white/[0.04] transition-colors duration-500">
                 <div className="text-[10px] font-mono tracking-widest text-white/30 mb-6">0{i + 1} // CAPABILITY</div>
                 <h3 className="text-2xl font-bold uppercase tracking-tight mb-4 group-hover:text-white transition-colors">{feature.title}</h3>
                 <p className="text-white/50 leading-relaxed text-sm">{feature.desc}</p>
@@ -260,36 +260,36 @@ export default function AboutPage() {
 
         {/* AN OPTIMISTIC APPROACH */}
         <section className="max-w-5xl mx-auto px-6 py-32 border-t border-white/10">
-          <div className="reveal-block border-l-2 border-white/20 pl-8 md:pl-16 py-4">
+          <div className="reveal-block border-l-2 border-white/20 pl-6 md:pl-16 py-4">
             <h2 className="text-sm font-mono tracking-[0.4em] text-white/40 uppercase mb-12">
               An Optimistic Approach
             </h2>
             
             <div className="space-y-16">
               <div>
-                <h3 className="text-3xl font-black uppercase tracking-tight mb-6">Quantum Horizons</h3>
-                <p className="text-white/60 text-lg leading-relaxed max-w-2xl">
+                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-4 md:mb-6">Quantum Horizons</h3>
+                <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-2xl">
                   Quantum computing is reshaping cybersecurity, AI, and complex problem-solving. We provide tools for students to explore quantum algorithms and real-world applications.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-3xl font-black uppercase tracking-tight mb-6">Decentralized Trust</h3>
-                <p className="text-white/60 text-lg leading-relaxed max-w-2xl">
+                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-4 md:mb-6">Decentralized Trust</h3>
+                <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-2xl">
                   Web3 and blockchain technologies are redefining data ownership, transparency, and digital trust. We build decentralized applications that empower users and secure the internet of tomorrow.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-3xl font-black uppercase tracking-tight mb-6">Immersive Realities</h3>
-                <p className="text-white/60 text-lg leading-relaxed max-w-2xl">
+                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-4 md:mb-6">Immersive Realities</h3>
+                <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-2xl">
                   By bridging the physical and digital worlds through Mixed Reality (XR), we are creating intuitive, spatial experiences that transform how we learn, interact, and solve problems.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-3xl font-black uppercase tracking-tight mb-6">Inclusive Progress</h3>
-                <p className="text-white/60 text-lg leading-relaxed max-w-2xl">
+                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-4 md:mb-6">Inclusive Progress</h3>
+                <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-2xl">
                   With low-code and no-code platforms, we enable students from all backgrounds to develop solutions without deep programming expertise. Empowering non-tech innovators is key to our mission.
                 </p>
               </div>

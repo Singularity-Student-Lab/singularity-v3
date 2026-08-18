@@ -108,7 +108,7 @@ export default function LabHero({ name, focus, description, video, color }: Prop
   return (
     <section
       ref={sectionRef}
-      className="relative h-[85vh] flex items-center justify-center text-center overflow-hidden bg-black"
+      className="relative h-[70vh] md:h-[85vh] flex items-center justify-center text-center overflow-hidden bg-black"
     >
       {/* VIDEO */}
       <video
@@ -146,7 +146,7 @@ export default function LabHero({ name, focus, description, video, color }: Prop
       />
 
       {/* CONTENT */}
-      <div ref={contentRef} className="relative z-30 max-w-4xl px-6">
+      <div ref={contentRef} className="relative z-30 max-w-4xl px-4 md:px-6">
         <p className="text-[11px] font-mono tracking-[0.4em] text-white/40 uppercase mb-6 text-center">
           {focus}
         </p>

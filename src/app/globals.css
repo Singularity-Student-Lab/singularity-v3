@@ -50,3 +50,10 @@ body {
 .lab-logo{
   transform: translateZ(40px);
 }
+
+/* Prevent horizontal overflow on mobile */
+@media (max-width: 767px) {
+  body {
+    overflow-x: hidden;
+  }
+}
