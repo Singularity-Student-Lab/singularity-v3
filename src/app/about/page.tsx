@@ -218,6 +218,98 @@ export default function AboutPage() {
             </div>
           </div>
 
+          <div className="reveal-block flex flex-col md:flex-row gap-8 md:gap-16 items-start">
+            <h2 className="text-sm font-mono tracking-[0.4em] text-white/40 uppercase w-48 shrink-0 pt-6">
+              Chief Executive
+            </h2>
+            <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6 group p-4 -ml-4 md:p-6 md:-ml-6 rounded-2xl border border-transparent hover:border-white/5 hover:bg-white/[0.02] transition-all duration-500 w-full max-w-2xl">
+              <div className="w-20 h-20 rounded-full overflow-hidden border border-white/20 shrink-0">
+                <img 
+                  src="https://res.cloudinary.com/dtlder1hw/image/upload/v1787073660/team/supreet.png" 
+                  alt="Supreet Kothuri" 
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
+                />
+              </div>
+              <div>
+                <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tight text-white/90">
+                  Supreet Kothuri
+                </h3>
+                <p className="text-white/50 text-sm md:text-base mt-1">
+                  Chief Executive
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* FOUNDING LEADS & ALUMNI SECTION */}
+          <div className="reveal-block flex flex-col md:flex-row gap-8 md:gap-16 items-start">
+            <h2 className="text-sm font-mono tracking-[0.4em] text-white/40 uppercase w-48 shrink-0 pt-6">
+              Founding Leads & Alumni
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-3xl">
+              {[
+                {
+                  name: "Jayanth Ramakrishnan",
+                  role: "Founder & Lead // Quantum Wing",
+                  image: "https://res.cloudinary.com/djtemmctt/image/upload/v1773943803/jayanth_dtqvzg.jpg"
+                },
+                {
+                  name: "Surya Teja Batchu",
+                  role: "Former Lead // Prajna Kritrima (AI/ML)",
+                  image: "https://res.cloudinary.com/djtemmctt/image/upload/v1771104005/singularity_new_logo_knedxr.png"
+                },
+                {
+                  name: "Abir Banerjee",
+                  role: "Former Lead // Chitra Darshan (AR/VR/Games)",
+                  image: "https://res.cloudinary.com/djtemmctt/image/upload/v1773945051/Abir_n5bwbq.jpg"
+                },
+                {
+                  name: "Poojan Patel",
+                  role: "Former Lead // Varahamihira (Cybersecurity)",
+                  image: "https://res.cloudinary.com/djtemmctt/image/upload/v1761841362/Screenshot_from_2025-10-30_21-36-50_dbpkou.png"
+                },
+                {
+                  name: "Parvendan R",
+                  role: "Former Lead // Bhaskaracharya (Web/Cloud)",
+                  image: "https://res.cloudinary.com/djtemmctt/image/upload/v1773943803/pary_reqdra.jpg"
+                },
+                {
+                  name: "Pradeep Chalamcharla",
+                  role: "Former Lead // Agastya (Robotics & IoT)",
+                  image: "https://res.cloudinary.com/djtemmctt/image/upload/v1761842247/Screenshot_from_2025-10-30_22-07-06_dbiv0s.png"
+                },
+                {
+                  name: "Lokesh K",
+                  role: "Former Executive // LoRa & Networks",
+                  image: "https://res.cloudinary.com/djtemmctt/image/upload/v1773943803/lokesh_ww5sa3.jpg"
+                },
+                {
+                  name: "Dave Meshak J",
+                  role: "Former Executive // Distributed Systems",
+                  image: "https://res.cloudinary.com/djtemmctt/image/upload/v1761841360/Screenshot_from_2025-10-30_21-28-41_utodxb.png"
+                },
+              ].map((alum, idx) => (
+                <div key={idx} className="flex items-center gap-4 group p-3 rounded-xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.04] hover:border-white/15 transition-all duration-300">
+                  <div className="w-14 h-14 rounded-full overflow-hidden border border-white/20 shrink-0 bg-white/5">
+                    <img 
+                      src={alum.image} 
+                      alt={alum.name} 
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" 
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold uppercase tracking-tight text-white/90 group-hover:text-white transition-colors">
+                      {alum.name}
+                    </h3>
+                    <p className="text-white/40 text-xs font-mono mt-0.5">
+                      {alum.role}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </section>
 
         {/* WHY SINGULARITY GRID */}
@@ -237,7 +329,7 @@ export default function AboutPage() {
               },
               {
                 title: "Multi-Domain Labs",
-                desc: "Whether you're into AI, Quantum, Robotics, Cybersecurity, or AR/VR — there's a place for you. Cross-domain projects are encouraged and supported."
+                desc: "Whether you're into AI, Quantum, Robotics, Cloud Computing, Cybersecurity & Blockchain, or AR/VR — there's a place for you. Cross-domain projects are encouraged and supported."
               },
               {
                 title: "Collaborate with the Best",
@@ -274,9 +366,16 @@ export default function AboutPage() {
               </div>
 
               <div>
-                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-4 md:mb-6">Decentralized Trust</h3>
+                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-4 md:mb-6">Cloud & Scalable Systems</h3>
                 <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-2xl">
-                  Web3 and blockchain technologies are redefining data ownership, transparency, and digital trust. We build decentralized applications that empower users and secure the internet of tomorrow.
+                  Modern web architectures and cloud computing power resilient global systems. We build scalable platforms, microservices, and distributed infrastructures that scale seamlessly.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-4 md:mb-6">Cyber Defense & Decentralized Trust</h3>
+                <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-2xl">
+                  Cybersecurity and blockchain technologies redefine data ownership, digital defense, and cryptographic trust to secure the internet of tomorrow.
                 </p>
               </div>
 
