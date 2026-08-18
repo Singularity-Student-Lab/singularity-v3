@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { labs } from '../data/labs'; 
@@ -13,6 +13,8 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const labsDropdownRef = useRef(null);
   const eventsDropdownRef = useRef(null);
+  const mobileMenuRef = useRef(null);
+  const mobileToggleRef = useRef(null);
 
   const events = [
     {
@@ -48,6 +50,51 @@ export default function Navbar() {
     return () => {
       document.body.style.overflow = '';
     };
+  }, [mobileMenuOpen]);
+
+  // Close mobile menu on Escape key
+  const handleEscape = useCallback((e) => {
+    if (e.key === 'Escape' && mobileMenuOpen) {
+      setMobileMenuOpen(false);
+      mobileToggleRef.current?.focus();
+    }
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.addEventListener('keydown', handleEscape);
+      // Move focus into the drawer
+      const timer = setTimeout(() => {
+        const firstLink = mobileMenuRef.current?.querySelector('a, button');
+        firstLink?.focus();
+      }, 100);
+      return () => {
+        document.removeEventListener('keydown', handleEscape);
+        clearTimeout(timer);
+      };
+    }
+  }, [mobileMenuOpen, handleEscape]);
+
+  // Trap focus inside mobile menu drawer
+  useEffect(() => {
+    if (!mobileMenuOpen || !mobileMenuRef.current) return;
+    const drawer = mobileMenuRef.current;
+    const handleTabTrap = (e) => {
+      if (e.key !== 'Tab') return;
+      const focusable = drawer.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])');
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    drawer.addEventListener('keydown', handleTabTrap);
+    return () => drawer.removeEventListener('keydown', handleTabTrap);
   }, [mobileMenuOpen]);
 
   return (
@@ -128,9 +175,12 @@ export default function Navbar() {
 
         {/* Mobile Toggle Button */}
         <button 
+          ref={mobileToggleRef}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="md:hidden p-2 text-white hover:opacity-80 transition-opacity z-[110]"
-          aria-label="Toggle Menu"
+          aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Menu'}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-menu-drawer"
         >
           {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -138,7 +188,14 @@ export default function Navbar() {
 
       {/* Mobile Menu Drawer Overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 w-full h-screen bg-black/95 backdrop-blur-md z-[99] flex flex-col justify-start overflow-y-auto px-6 pt-24 pb-10 gap-6 text-white font-mono">
+        <div
+          ref={mobileMenuRef}
+          id="mobile-menu-drawer"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation menu"
+          className="fixed inset-0 w-full h-screen bg-black/95 backdrop-blur-md z-[99] flex flex-col justify-start overflow-y-auto px-6 pt-24 pb-10 gap-6 text-white font-mono"
+        >
           <Link 
             href="/about" 
             onClick={() => setMobileMenuOpen(false)}

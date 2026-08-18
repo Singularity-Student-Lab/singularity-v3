@@ -21,7 +21,7 @@
     "paths": {
       "@/*": ["./*"]
     },
-    "forceConsistentCasingInFileNames": false
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
     "next-env.d.ts",
