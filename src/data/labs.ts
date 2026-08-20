@@ -203,7 +203,7 @@ export const labs: Lab[] = [
       }
     ],
     members: [
-      { name: "Hriday Lath", year: "1st Year", linkedin: "https://www.linkedin.com/in/hridaylath" },
+      { name: "Hriday Lath", year: "Member", linkedin: "https://www.linkedin.com/in/hridaylath" },
       { name: "Yandava Abhishek", year: "Member", github: "https://github.com/abhishekyandava7-png", linkedin: "https://www.linkedin.com/in/abhishek-yandava-557333352?utm_source=share_via&utm_content=profile&utm_medium=member_android" },
     ]
   },
