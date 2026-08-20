@@ -39,7 +39,7 @@ export const labs: Lab[] = [
     executives: [
       {
         name: "B Md Fawaz",
-        role: "Executive,
+        role: "Executive",
         image: "https://res.cloudinary.com/dtlder1hw/image/upload/v1787073654/team/fawaz.png",
         github: "https://github.com/f4w4z",
         linkedin: "https://www.linkedin.com/in/fawaaaaz/"
