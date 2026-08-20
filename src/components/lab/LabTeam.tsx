@@ -91,7 +91,7 @@ export default function LabTeam({ executives, members, logo, color }: Props) {
   }, { scope: containerRef })
 
   return (
-    <section ref={containerRef} className="max-w-6xl mx-auto px-6 pb-32 overflow-hidden">
+    <section ref={containerRef} className="max-w-6xl mx-auto px-6 pb-32 overflow-x-hidden">
 
       {/* HEADER */}
       <div className="team-header-container text-center mb-16 md:mb-20">

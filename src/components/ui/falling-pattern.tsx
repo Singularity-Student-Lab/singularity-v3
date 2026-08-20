@@ -1,117 +1,91 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import { cn } from '../../lib/utils'; // Fixed relative import path
+import { cn } from '../../lib/utils';
 
 type FallingPatternProps = React.ComponentProps<'div'> & {
-	/** Primary color of the falling elements (default: 'var(--primary)') */
+	/** Primary color of the falling elements (default: 'rgba(255, 255, 255, 0.15)') */
 	color?: string;
-	/** Background color (default: 'var(--background)') */
+	/** Background color (default: 'transparent') */
 	backgroundColor?: string;
-	/** Animation duration in seconds (default: 150) */
+	/** Animation duration in seconds (default: 40) */
 	duration?: number;
-	/** Blur intensity for the overlay effect (default: '1em') */
-	blurIntensity?: string;
 	/** Pattern density - affects spacing (default: 1) */
 	density?: number;
 };
 
 export function FallingPattern({
-	color = 'rgba(255, 255, 255, 0.1)',
-	backgroundColor = '#010102',
-	duration = 150,
-	blurIntensity = '1px',
-	density = 1,
+	color = 'rgba(255, 255, 255, 0.15)',
+	backgroundColor = 'transparent',
+	duration = 45,
 	className,
 }: FallingPatternProps) {
-	
-	const generateBackgroundImage = () => {
-		const patterns = [
-			`radial-gradient(4px 100px at 0px 235px, ${color}, transparent)`,
-			`radial-gradient(4px 100px at 300px 235px, ${color}, transparent)`,
-			`radial-gradient(1.5px 1.5px at 150px 117.5px, ${color} 100%, transparent 150%)`,
-			`radial-gradient(4px 100px at 0px 252px, ${color}, transparent)`,
-			`radial-gradient(4px 100px at 300px 252px, ${color}, transparent)`,
-			`radial-gradient(1.5px 1.5px at 150px 126px, ${color} 100%, transparent 150%)`,
-			`radial-gradient(4px 100px at 0px 150px, ${color}, transparent)`,
-			`radial-gradient(4px 100px at 300px 150px, ${color}, transparent)`,
-			`radial-gradient(1.5px 1.5px at 150px 75px, ${color} 100%, transparent 150%)`,
-			`radial-gradient(4px 100px at 0px 253px, ${color}, transparent)`,
-			`radial-gradient(4px 100px at 300px 253px, ${color}, transparent)`,
-			`radial-gradient(1.5px 1.5px at 150px 126.5px, ${color} 100%, transparent 150%)`,
-			`radial-gradient(4px 100px at 0px 204px, ${color}, transparent)`,
-			`radial-gradient(4px 100px at 300px 204px, ${color}, transparent)`,
-			`radial-gradient(1.5px 1.5px at 150px 102px, ${color} 100%, transparent 150%)`,
-			`radial-gradient(4px 100px at 0px 134px, ${color}, transparent)`,
-			`radial-gradient(4px 100px at 300px 134px, ${color}, transparent)`,
-			`radial-gradient(1.5px 1.5px at 150px 67px, ${color} 100%, transparent 150%)`,
-			`radial-gradient(4px 100px at 0px 179px, ${color}, transparent)`,
-			`radial-gradient(4px 100px at 300px 179px, ${color}, transparent)`,
-			`radial-gradient(1.5px 1.5px at 150px 89.5px, ${color} 100%, transparent 150%)`,
-			`radial-gradient(4px 100px at 0px 299px, ${color}, transparent)`,
-			`radial-gradient(4px 100px at 300px 299px, ${color}, transparent)`,
-			`radial-gradient(1.5px 1.5px at 150px 149.5px, ${color} 100%, transparent 150%)`,
-			`radial-gradient(4px 100px at 0px 215px, ${color}, transparent)`,
-			`radial-gradient(4px 100px at 300px 215px, ${color}, transparent)`,
-			`radial-gradient(1.5px 1.5px at 150px 107.5px, ${color} 100%, transparent 150%)`,
-			`radial-gradient(4px 100px at 0px 281px, ${color}, transparent)`,
-			`radial-gradient(4px 100px at 300px 281px, ${color}, transparent)`,
-			`radial-gradient(1.5px 1.5px at 150px 140.5px, ${color} 100%, transparent 150%)`,
-			`radial-gradient(4px 100px at 0px 158px, ${color}, transparent)`,
-			`radial-gradient(4px 100px at 300px 158px, ${color}, transparent)`,
-			`radial-gradient(1.5px 1.5px at 150px 79px, ${color} 100%, transparent 150%)`,
-			`radial-gradient(4px 100px at 0px 210px, ${color}, transparent)`,
-			`radial-gradient(4px 100px at 300px 210px, ${color}, transparent)`,
-			`radial-gradient(1.5px 1.5px at 150px 105px, ${color} 100%, transparent 150%)`,
-		];
-		return patterns.join(', ');
-	};
-
-	const backgroundSizes = Array(35).fill('300px 235px').join(', ');
-
-	const startPositions =
-		'0px 220px, 3px 220px, 151.5px 337.5px, 25px 24px, 28px 24px, 176.5px 150px, 50px 16px, 53px 16px, 201.5px 91px, 75px 224px, 78px 224px, 226.5px 230.5px, 100px 19px, 103px 19px, 251.5px 121px, 125px 120px, 128px 120px, 276.5px 187px, 150px 31px, 153px 31px, 301.5px 120.5px, 175px 235px, 178px 235px, 326.5px 384.5px, 200px 121px, 203px 121px, 351.5px 228.5px, 225px 224px, 228px 224px, 376.5px 364.5px, 250px 26px, 253px 26px, 401.5px 105px, 275px 75px, 278px 75px, 426.5px 180px';
-	
-	const endPositions =
-		'0px 6800px, 3px 6800px, 151.5px 6917.5px, 25px 13632px, 28px 13632px, 176.5px 13758px, 50px 5416px, 53px 5416px, 201.5px 5491px, 75px 17175px, 78px 17175px, 226.5px 17301.5px, 100px 5119px, 103px 5119px, 251.5px 5221px, 125px 8428px, 128px 8428px, 276.5px 8495px, 150px 9876px, 153px 9876px, 301.5px 9965.5px, 175px 13391px, 178px 13391px, 326.5px 13540.5px, 200px 14741px, 203px 14741px, 351.5px 14848.5px, 225px 18770px, 228px 18770px, 376.5px 18910.5px, 250px 5082px, 253px 5082px, 401.5px 5161px, 275px 6375px, 278px 6375px, 426.5px 6480px';
+	// Pre-generate static repeating SVG pattern for GPU compositor layer
+	// Using CSS transform: translateY runs entirely on the GPU compositor thread
+	// with zero CPU layout / paint recalculations per frame.
 
 	return (
-		<div className={cn('relative h-full w-full', className)}>
-			<motion.div
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{ duration: 1 }}
-				className="size-full"
-			>
-				<motion.div
-  className="relative size-full z-0"
-  style={{
-    backgroundColor,
-    backgroundImage: generateBackgroundImage(),
-    backgroundSize: backgroundSizes,
-    backgroundRepeat: 'repeat', // Ensure this is set
-  }}
-  initial={{ backgroundPosition: startPositions }}
-  animate={{
-    backgroundPosition: endPositions, // Use a single string if the array hangs
-  }}
-  transition={{
-    duration: duration,
-    ease: 'linear',
-    repeat: Infinity,
-  }}
-/>
-			</motion.div>
-			{/* Dotted Overlay Mesh */}
+		<div className={cn('relative h-full w-full overflow-hidden pointer-events-none', className)}>
+			{/* GPU Animated Falling Stream Layer 1 */}
 			<div
-				className="absolute inset-0 z-1 pointer-events-none"
+				className="absolute inset-0 w-full h-[200%] transform-gpu will-change-transform"
 				style={{
-					backdropFilter: `blur(${blurIntensity})`,
-					backgroundImage: `radial-gradient(circle at 50% 50%, transparent 0, transparent 2px, ${backgroundColor} 2px)`,
-					backgroundSize: `${8 * density}px ${8 * density}px`,
+					backgroundColor,
+					backgroundImage: `
+						radial-gradient(1.5px 80px at 40px 0px, ${color}, transparent),
+						radial-gradient(1.5px 120px at 120px 80px, ${color}, transparent),
+						radial-gradient(1.5px 90px at 220px 40px, ${color}, transparent),
+						radial-gradient(1.5px 140px at 320px 120px, ${color}, transparent),
+						radial-gradient(1.5px 70px at 420px 20px, ${color}, transparent),
+						radial-gradient(1.5px 110px at 540px 90px, ${color}, transparent),
+						radial-gradient(1.5px 130px at 660px 50px, ${color}, transparent),
+						radial-gradient(1.5px 85px at 780px 140px, ${color}, transparent),
+						radial-gradient(1px 1px at 80px 60px, ${color} 100%, transparent),
+						radial-gradient(1px 1px at 260px 150px, ${color} 100%, transparent),
+						radial-gradient(1px 1px at 480px 90px, ${color} 100%, transparent),
+						radial-gradient(1px 1px at 700px 200px, ${color} 100%, transparent)
+					`,
+					backgroundSize: '820px 500px',
+					animation: `fallingRain ${duration}s linear infinite`,
 				}}
 			/>
+
+			{/* GPU Animated Falling Stream Layer 2 (Offset for depth) */}
+			<div
+				className="absolute inset-0 w-full h-[200%] opacity-60 transform-gpu will-change-transform"
+				style={{
+					backgroundImage: `
+						radial-gradient(1px 60px at 80px 100px, ${color}, transparent),
+						radial-gradient(1px 90px at 180px 30px, ${color}, transparent),
+						radial-gradient(1px 75px at 360px 160px, ${color}, transparent),
+						radial-gradient(1px 100px at 500px 60px, ${color}, transparent),
+						radial-gradient(1px 80px at 620px 180px, ${color}, transparent),
+						radial-gradient(1px 110px at 740px 40px, ${color}, transparent)
+					`,
+					backgroundSize: '760px 450px',
+					animation: `fallingRain ${duration * 0.75}s linear infinite`,
+				}}
+			/>
+
+			{/* Dotted Grid Overlay without CPU-heavy backdropFilter */}
+			<div
+				className="absolute inset-0 pointer-events-none opacity-30"
+				style={{
+					backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.2) 1px, transparent 0)`,
+					backgroundSize: '32px 32px',
+				}}
+			/>
+
+			<style jsx global>{`
+				@keyframes fallingRain {
+					0% {
+						transform: translate3d(0, -50%, 0);
+					}
+					100% {
+						transform: translate3d(0, 0%, 0);
+					}
+				}
+			`}</style>
 		</div>
 	);
 }

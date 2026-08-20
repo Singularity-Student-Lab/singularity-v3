@@ -1,98 +1,97 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Instagram, Linkedin, Mail, MapPin } from "lucide-react"
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
-const singularityLogo = "https://res.cloudinary.com/djtemmctt/image/upload/v1771104005/singularity_new_logo_knedxr.png"
+const singularityLogo = "https://res.cloudinary.com/djtemmctt/image/upload/v1771104005/singularity_new_logo_knedxr.png";
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#050505] border-t border-white/10 pt-20 pb-10 px-6 md:px-10 z-[100] text-white">
-      <div className="max-w-7xl mx-auto">
+    <footer className="relative bg-black text-white border-t border-white/10 pt-16 pb-12 px-6 md:px-12 z-[50]">
+      <div className="max-w-6xl mx-auto space-y-12">
         
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-20">
-          
-          {/* Col 1: Branding */}
-          <div className="md:col-span-4">
-            <Link href="/">
-              <div className="flex items-center gap-4 cursor-pointer hover:opacity-80 transition-opacity mb-6">
-                <img src={singularityLogo} alt="Singularity Logo" className="w-10 h-10 object-contain" />
-                <div className="font-black text-xl tracking-tighter uppercase leading-none">
-                  Singularity<br/>Student Lab
-                </div>
-              </div>
-            </Link>
-            <p className="text-white/40 text-sm leading-relaxed font-mono">
-              Decode // Innovate // Transform. <br />
-              SRM University AP's premier student-led research initiative.
-            </p>
-          </div>
-
-          {/* Col 2: Navigation */}
-          <div className="md:col-span-2 md:col-start-6">
-            <h3 className="text-white font-bold uppercase tracking-widest text-[10px] mb-6 font-mono opacity-30">Navigation</h3>
-            <div className="flex flex-col gap-4 text-sm text-white/50 font-mono uppercase tracking-wider">
-              <Link href="/" className="hover:text-white transition-colors w-fit">Home</Link>
-              <Link href="/about" className="hover:text-white transition-colors w-fit">About Us</Link>
-              <Link href="/#contact" className="hover:text-white transition-colors w-fit">Ping Us</Link>
+        {/* Brand & Mail Header */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-10 border-b border-white/10">
+          <Link href="/" className="flex items-center gap-3 group">
+            <img 
+              src={singularityLogo} 
+              alt="Singularity Logo" 
+              className="w-7 h-7 object-contain opacity-90 group-hover:scale-105 transition-transform" 
+            />
+            <div className="flex flex-col">
+              <span className="font-bold text-sm uppercase tracking-tight text-white">
+                Singularity Student Lab
+              </span>
+              <span className="text-[10px] font-mono text-white/40 uppercase tracking-wider">
+                SRM University AP
+              </span>
             </div>
-          </div>
+          </Link>
 
-          {/* Col 3: Connect */}
-          <div className="md:col-span-3">
-            <h3 className="text-white font-bold uppercase tracking-widest text-[10px] mb-6 font-mono opacity-30">Connect</h3>
-            <div className="flex flex-col gap-4 text-sm text-white/50 font-mono tracking-tight">
-              <a href="mailto:singularitylab@srmap.edu.in" className="flex items-center gap-3 hover:text-white transition-colors w-fit">
-                <Mail size={14} className="opacity-50" />
-                <span>singularitylab@srmap.edu.in</span>
-              </a>
-              <a href="https://www.instagram.com/thesingularity.srmap" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-white transition-colors w-fit">
-                <Instagram size={14} className="opacity-50" />
-                <span>thesingularity.srmap</span>
-              </a>
-              <a href="https://www.linkedin.com/company/singularity-student-lab-srmap/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-white transition-colors w-fit">
-                <Linkedin size={14} className="opacity-50" />
-                <span>Singularity Student Lab</span>
-              </a>
-            </div>
-          </div>
-
-          {/* Col 4: Location & Map */}
-          <div className="md:col-span-3">
-            <h3 className="text-white font-bold uppercase tracking-widest text-[10px] mb-6 font-mono opacity-30">Location</h3>
-            <div className="flex items-start gap-3 text-xs text-white/50 mb-6 font-mono tracking-tight">
-              <MapPin size={14} className="shrink-0 mt-1 opacity-50" />
-              <p className="leading-relaxed">
-                S-209, SR Block,<br />
-                SRM University AP,<br />
-                Andhra Pradesh 522502
-              </p>
-            </div>
-            
-            {/* The Corrected SRM AP Map */}
-            <div className="w-full h-32 rounded-lg overflow-hidden border border-white/10 opacity-60 hover:opacity-100 transition-opacity duration-500 bg-white/5">
-              <iframe 
-                src="https://www.google.com/maps?q=Singularity+Student+Lab+-+SRMAP&output=embed"
-                width="100%" 
-                height="100%" 
-                style={{ border: 0, filter: "grayscale(1) invert(0.9) contrast(1.2)" }} 
-                allowFullScreen={false} 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
-                />
-            </div>
-          </div>
-
+          <a 
+            href="mailto:singularitylab@srmap.edu.in"
+            className="inline-flex items-center gap-2 text-sm md:text-base font-mono text-white/80 hover:text-white border-b border-white/30 hover:border-white transition-colors pb-0.5"
+          >
+            <span>singularitylab@srmap.edu.in</span>
+            <ArrowUpRight size={15} className="text-white/60" />
+          </a>
         </div>
 
-        {/* Bottom Section */}
-        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 text-white/20 font-mono text-[9px] tracking-[0.4em] uppercase">
-          <p>© {new Date().getFullYear()} Singularity Student Lab. All rights reserved.</p>
-          <p className="mt-4 md:mt-0">SRM University AP // Amaravati</p>
+        {/* Links Directory */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 text-xs font-mono uppercase tracking-widest text-white/60">
+          <div className="space-y-3">
+            <span className="text-white/30 block text-[10px]">Navigation</span>
+            <div className="space-y-2">
+              <Link href="/" className="block hover:text-white transition-colors">Home</Link>
+              <Link href="/about" className="block hover:text-white transition-colors">About Us</Link>
+              <Link href="/#contact" className="block hover:text-white transition-colors">Ping Us</Link>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <span className="text-white/30 block text-[10px]">Initiatives</span>
+            <div className="space-y-2">
+              <a 
+                href="https://schrodingerscat.singularitylabsrmap.space/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block hover:text-white transition-colors"
+              >
+                Schrödinger&apos;s Cat ↗
+              </a>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <span className="text-white/30 block text-[10px]">Social</span>
+            <div className="space-y-2">
+              <a 
+                href="https://www.linkedin.com/company/singularity-student-lab-srmap/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block hover:text-white transition-colors"
+              >
+                LinkedIn ↗
+              </a>
+              <a 
+                href="https://www.instagram.com/thesingularity.srmap" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block hover:text-white transition-colors"
+              >
+                Instagram ↗
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Minimalist Bottom Bar */}
+        <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[10px] font-mono tracking-widest uppercase text-white/30">
+          <p>© {new Date().getFullYear()} Singularity Student Lab</p>
+          <p>SRM University AP // Amaravati</p>
         </div>
 
       </div>
     </footer>
-  )
+  );
 }

@@ -20,11 +20,11 @@ export default function AboutPage() {
     
     tl.fromTo(".hero-tag", 
       { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.2 }
+      { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.1 }
     )
     .fromTo(".hero-title-word",
       { opacity: 0, y: 60, rotateX: -45 },
-      { opacity: 1, y: 0, rotateX: 0, duration: 1, stagger: 0.1, ease: "expo.out" },
+      { opacity: 1, y: 0, rotateX: 0, duration: 0.9, stagger: 0.08, ease: "expo.out" },
       "-=0.6"
     )
 
@@ -36,12 +36,13 @@ export default function AboutPage() {
         {
           opacity: 1,
           y: 0,
-          duration: 1.2,
+          duration: 1.0,
           ease: "power3.out",
           clearProps: "all",
           scrollTrigger: {
             trigger: block,
             start: "top 90%",
+            fastScrollEnd: true,
           }
         }
       )
@@ -54,21 +55,25 @@ export default function AboutPage() {
         opacity: 1,
         y: 0,
         scale: 1,
-        duration: 0.8,
-        stagger: 0.15,
+        duration: 0.7,
+        stagger: 0.12,
         ease: "power2.out",
         clearProps: "all",
         scrollTrigger: {
           trigger: ".why-grid",
           start: "top 85%",
+          fastScrollEnd: true,
         }
       }
     )
 
+    return () => {
+      ScrollTrigger.getAll().forEach(t => t.kill())
+    }
   }, { scope: containerRef })
 
   return (
-    <div ref={containerRef} className="bg-black text-white min-h-screen overflow-hidden selection:bg-white selection:text-black">
+    <div ref={containerRef} className="bg-black text-white min-h-screen overflow-x-clip selection:bg-white selection:text-black">
       
       <main className="pt-40 pb-32">
         {/* HERO SECTION */}
@@ -125,6 +130,8 @@ export default function AboutPage() {
                 <img 
                   src="https://res.cloudinary.com/djtemmctt/image/upload/v1773943803/jayanth_dtqvzg.jpg" 
                   alt="Jayanth Ramakrishnan" 
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
                 />
               </div>

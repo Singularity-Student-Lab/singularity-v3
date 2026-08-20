@@ -22,13 +22,13 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 	useEffect(() => {
 		if (!containerRef.current) return;
 
+		const isMobile = window.innerWidth < 768;
 		const SEPARATION = 150;
-		const AMOUNTX = 40;
-		const AMOUNTY = 60;
+		const AMOUNTX = isMobile ? 28 : 40;
+		const AMOUNTY = isMobile ? 40 : 60;
 
 		// Scene setup
 		const scene = new THREE.Scene();
-        // Fog helps elements fade into the distance for the "Space" feel
 		scene.fog = new THREE.Fog(0x000000, 2000, 10000);
 
 		const camera = new THREE.PerspectiveCamera(
@@ -39,11 +39,14 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 		);
 		camera.position.set(0, 355, 1220);
 
+		const dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.25 : 1.75);
 		const renderer = new THREE.WebGLRenderer({
 			alpha: true,
-			antialias: true,
+			antialias: false, // Antialias on points is unnecessary and heavily taxes mobile GPUs
+			powerPreference: "high-performance",
+			precision: "mediump",
 		});
-		renderer.setPixelRatio(window.devicePixelRatio);
+		renderer.setPixelRatio(dpr);
 		renderer.setSize(window.innerWidth, window.innerHeight);
 		renderer.setClearColor(0x000000, 0);
 
@@ -61,7 +64,6 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 				const z = iy * SEPARATION - (AMOUNTY * SEPARATION) / 2;
 
 				positions.push(x, y, z);
-                // Soft vintage white for the dots
 				colors.push(0.8, 0.8, 0.8); 
 			}
 		}
@@ -73,7 +75,7 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 		geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
 
 		const material = new THREE.PointsMaterial({
-			size: 6,
+			size: isMobile ? 4.5 : 6,
 			vertexColors: true,
 			transparent: true,
 			opacity: 0.4,
@@ -85,8 +87,10 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 
 		let count = 0;
 		let animationId: number = 0;
+		let isVisible = true;
 
 		const animate = () => {
+			if (!isVisible) return;
 			animationId = requestAnimationFrame(animate);
 
 			const positionAttribute = geometry.attributes.position;
@@ -96,7 +100,6 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 			for (let ix = 0; ix < AMOUNTX; ix++) {
 				for (let iy = 0; iy < AMOUNTY; iy++) {
 					const index = i * 3;
-					// Sine wave math for the undulating surface
 					positionsArr[index + 1] =
 						Math.sin((ix + count) * 0.3) * 50 +
 						Math.sin((iy + count) * 0.5) * 50;
@@ -106,16 +109,29 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 
 			positionAttribute.needsUpdate = true;
 			renderer.render(scene, camera);
-			count += 0.05; // Controlled speed for vintage feel
+			count += 0.05;
 		};
 
+		let resizeTimer: ReturnType<typeof setTimeout>;
 		const handleResize = () => {
-			camera.aspect = window.innerWidth / window.innerHeight;
-			camera.updateProjectionMatrix();
-			renderer.setSize(window.innerWidth, window.innerHeight);
+			clearTimeout(resizeTimer);
+			resizeTimer = setTimeout(() => {
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+				renderer.setSize(window.innerWidth, window.innerHeight);
+			}, 100);
 		};
 
-		window.addEventListener('resize', handleResize);
+		const handleVisibilityChange = () => {
+			isVisible = !document.hidden;
+			if (isVisible) {
+				cancelAnimationFrame(animationId);
+				animate();
+			}
+		};
+
+		window.addEventListener('resize', handleResize, { passive: true });
+		document.addEventListener('visibilitychange', handleVisibilityChange);
 		animate();
 
 		sceneRef.current = {
@@ -128,7 +144,9 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 		};
 
 		return () => {
+			clearTimeout(resizeTimer);
 			window.removeEventListener('resize', handleResize);
+			document.removeEventListener('visibilitychange', handleVisibilityChange);
 			if (sceneRef.current) {
 				cancelAnimationFrame(sceneRef.current.animationId);
 				sceneRef.current.scene.traverse((object) => {

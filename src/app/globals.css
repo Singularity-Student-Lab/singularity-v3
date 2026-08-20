@@ -11,23 +11,47 @@
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
 body {
   background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-unbounded), sans-serif;
+  overflow-x: clip;
+  width: 100%;
 }
 
 .card-interactive {
   transform-style: preserve-3d;
-  transition: transform 0.25s ease;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card-interactive {
+    transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+  }
 }
 
 .card-bg {
   transform: translateZ(-40px);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 .lab-logo {
   transform: translateZ(40px);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 .card-glow {
@@ -36,24 +60,14 @@ body {
     rgba(255,255,255,0.15),
     transparent 60%
   );
+  will-change: opacity;
 }
 
 .card-light {
   background: radial-gradient(
-    circle at var(--x) var(--y),
+    circle at var(--x, 50%) var(--y, 50%),
     rgba(255,255,255,0.25),
     transparent 40%
   );
   transition: opacity 0.3s;
-}
-
-.lab-logo{
-  transform: translateZ(40px);
-}
-
-/* Prevent horizontal overflow on mobile */
-@media (max-width: 767px) {
-  body {
-    overflow-x: hidden;
-  }
 }
