@@ -12,7 +12,7 @@ export function EntryWrapper({ children }) {
       {!isEntryComplete ? (
         <LoadingScreen onEnter={() => setIsEntryComplete(true)} />
       ) : (
-        <div className="animate-in fade-in zoom-in-90 duration-1000 ease-out">
+        <div className="animate-in fade-in duration-700 ease-out">
           {children}
         </div>
       )}

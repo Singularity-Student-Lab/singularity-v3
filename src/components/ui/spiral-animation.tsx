@@ -30,14 +30,15 @@ class AnimationController {
     private readonly cameraTravelDistance = 3400
     private readonly startDotYOffset = 28
     private readonly viewZoom = 100
-    private readonly numberOfStars = 5000
-    private readonly trailLength = 80
+    private readonly numberOfStars: number
+    private readonly trailLength = 70
     
-    constructor(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, dpr: number, size: number) {
+    constructor(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, dpr: number, size: number, numberOfStars = 3500) {
         this.canvas = canvas
         this.ctx = ctx
         this.dpr = dpr
         this.size = size
+        this.numberOfStars = numberOfStars
         this.timeline = gsap.timeline({ repeat: -1 })
         this.setupRandomGenerator()
         this.createStars()
@@ -230,19 +231,28 @@ export function SpiralAnimation() {
     const [dim, setDim] = useState({ w: typeof window !== 'undefined' ? window.innerWidth : 1920, h: typeof window !== 'undefined' ? window.innerHeight : 1080 });
 
     useEffect(() => {
-        const res = () => setDim({ w: window.innerWidth, h: window.innerHeight });
-        window.addEventListener('resize', res);
+        let resizeTimer: ReturnType<typeof setTimeout>;
+        const res = () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => setDim({ w: window.innerWidth, h: window.innerHeight }), 100);
+        };
+        window.addEventListener('resize', res, { passive: true });
         const canvas = canvasRef.current;
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
-        const dpr = window.devicePixelRatio || 1;
+        const isMobile = dim.w < 768;
+        const dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.25 : 1.75);
         const size = Math.max(dim.w, dim.h);
         canvas.width = size * dpr; canvas.height = size * dpr;
         canvas.style.width = `${dim.w}px`; canvas.style.height = `${dim.h}px`;
-        ctx.scale(dpr, dpr);
-        animationRef.current = new AnimationController(canvas, ctx, dpr, size);
-        return () => { window.removeEventListener('resize', res); animationRef.current?.destroy(); };
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        animationRef.current = new AnimationController(canvas, ctx, dpr, size, isMobile ? 2200 : 4000);
+        return () => { 
+            clearTimeout(resizeTimer);
+            window.removeEventListener('resize', res); 
+            animationRef.current?.destroy(); 
+        };
     }, [dim]);
 
     return <div className="relative w-full h-full bg-black"><canvas ref={canvasRef} className="absolute inset-0 w-full h-full" /></div>;

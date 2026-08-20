@@ -1,4 +1,4 @@
-import { Unbounded } from 'next/font/google';
+import { Unbounded, Inter } from 'next/font/google';
 import { EntryWrapper } from '../components/EntryWrapper';
 import Navbar from '../components/Navbar';
 import type { Metadata } from 'next';
@@ -7,6 +7,14 @@ import './globals.css';
 const unbounded = Unbounded({
   subsets: ['latin'],
   weight: ['400', '700', '900'],
+  variable: '--font-unbounded',
+  display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-inter',
   display: 'swap',
 });
 
@@ -93,7 +101,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
+    <html lang="en" className={`${unbounded.variable} ${inter.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -118,7 +126,7 @@ export default function RootLayout({
       </head>
 
       <body
-        className={`${unbounded.className} bg-black min-h-screen text-white overflow-x-hidden`}
+        className={`${unbounded.className} bg-black min-h-screen text-white overflow-x-clip`}
       >
         <EntryWrapper>
           <Navbar />

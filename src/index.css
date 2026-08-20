@@ -8,18 +8,8 @@
   font-family: 'Inter', sans-serif;
 }
 
-.card-wrapper {
-  will-change: transform;
-  transform: translateZ(0);
-}
-
-.cards-container {
-  transform: translateZ(0);
-}
-
 video {
   backface-visibility: hidden;
-  transform: translateZ(0);
 }
 
 
