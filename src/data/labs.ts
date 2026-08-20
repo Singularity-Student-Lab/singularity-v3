@@ -39,7 +39,7 @@ export const labs: Lab[] = [
     executives: [
       {
         name: "B Md Fawaz",
-        role: "Executive Lead",
+        role: "Executive,
         image: "https://res.cloudinary.com/dtlder1hw/image/upload/v1787073654/team/fawaz.png",
         github: "https://github.com/f4w4z",
         linkedin: "https://www.linkedin.com/in/fawaaaaz/"
@@ -78,7 +78,7 @@ export const labs: Lab[] = [
     executives: [
       {
         name: "Baratam Praneeth Gupta",
-        role: "Executive Lead",
+        role: "Executive",
         image: "https://res.cloudinary.com/dtlder1hw/image/upload/v1787073657/team/praneeth_gupta.jpg",
         github: "https://github.com/Praneeth0910",
         linkedin: "https://www.linkedin.com/in/baratam-praneeth-gupta-baba24361?utm_source=share_via&utm_content=profile&utm_medium=member_android"
@@ -104,7 +104,7 @@ export const labs: Lab[] = [
     executives: [
       {
         name: "Pranav Sikka",
-        role: "Executive Lead",
+        role: "Executive",
         image: "https://res.cloudinary.com/dtlder1hw/image/upload/v1787073656/team/pranav.png"
       },
       {
@@ -130,7 +130,7 @@ export const labs: Lab[] = [
     executives: [
       {
         name: "Anmol Sharma",
-        role: "Executive Lead",
+        role: "Executive",
         image: "https://res.cloudinary.com/dtlder1hw/image/upload/v1787073653/team/anmol.png",
         github: "https://github.com/Gostmennnnn",
         linkedin: "https://www.linkedin.com/in/Anmol-sharma-ba0b6a387"
@@ -163,7 +163,7 @@ export const labs: Lab[] = [
     executives: [
       {
         name: "Yuvraj Singh",
-        role: "Executive Lead",
+        role: "Executive",
         image: "https://res.cloudinary.com/dtlder1hw/image/upload/v1787073660/team/yuvraj.jpg",
         github: "https://github.com/YUVRAJ-SINGH-3178",
         linkedin: "https://www.linkedin.com/in/yuvraj-singh-3178saturn/"
@@ -198,7 +198,7 @@ export const labs: Lab[] = [
     executives: [
       {
         name: "Agastya Pandey",
-        role: "Executive Lead",
+        role: "Executive",
         image: "https://res.cloudinary.com/dtlder1hw/image/upload/v1787073651/team/agastya_pandey.jpg"
       }
     ],
@@ -220,7 +220,7 @@ export const labs: Lab[] = [
     executives: [
       {
         name: "Supreet Kothuri",
-        role: "Executive Lead",
+        role: "Executive",
         image: "https://res.cloudinary.com/dtlder1hw/image/upload/v1787073660/team/supreet.png"
       }
     ],
