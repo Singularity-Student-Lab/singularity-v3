@@ -227,6 +227,40 @@ export default function AboutPage() {
 
           <div className="reveal-block flex flex-col md:flex-row gap-8 md:gap-16 items-start">
             <h2 className="text-sm font-mono tracking-[0.4em] text-white/40 uppercase w-48 shrink-0 pt-6">
+              Student Advisor
+            </h2>
+            <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6 group p-4 -ml-4 md:p-6 md:-ml-6 rounded-2xl border border-transparent hover:border-white/5 hover:bg-white/[0.02] transition-all duration-500 w-full max-w-2xl">
+              <div className="w-20 h-20 rounded-full overflow-hidden border border-white/20 shrink-0">
+                <img 
+                  src="https://res.cloudinary.com/dtlder1hw/image/upload/v1787501604/team/anwar.jpg" 
+                  alt="Anwar Faizaan Reza" 
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
+                />
+              </div>
+              <div>
+                <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tight text-white/90">
+                  Anwar Faizaan Reza
+                </h3>
+                <p className="text-white/50 text-sm md:text-base mt-1">
+                  Student Advisor
+                </p>
+                <div className="flex justify-center sm:justify-start gap-5 mt-3">
+                  <a 
+                    href="https://www.linkedin.com/in/anwar-faizaan-reza-032418430" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-white/40 hover:text-white hover:scale-110 transition-all" 
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin size={18} />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="reveal-block flex flex-col md:flex-row gap-8 md:gap-16 items-start">
+            <h2 className="text-sm font-mono tracking-[0.4em] text-white/40 uppercase w-48 shrink-0 pt-6">
               Chief Executive
             </h2>
             <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6 group p-4 -ml-4 md:p-6 md:-ml-6 rounded-2xl border border-transparent hover:border-white/5 hover:bg-white/[0.02] transition-all duration-500 w-full max-w-2xl">
