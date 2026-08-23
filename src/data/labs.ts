@@ -89,6 +89,7 @@ export const labs: Lab[] = [
       { name: "K. Y. Vardhan", year: "Member", github: "https://github.com/vardhan-kadali", linkedin: "https://www.linkedin.com/in/vardhan-kadali-655446395/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B7Z4BIk%2BST5CYd23ROdHC1g%3D%3D" },
       { name: "SRI VASTAVA SRI HARSHA GAMPA", year: "Member", github: "https://github.com/SRIVASTAVASRIHARSHA", linkedin: "https://www.linkedin.com/in/sri-vastava-sri-harsha-gampa-830b64382?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
       { name: "SEMBETI SAI PUJITH", year: "Member", github: "https://github.com/sembetisaipujith", linkedin: "https://www.linkedin.com/in/sai-pujith-sembeti-a305863b1" }
+      { name: "Jaswanth Kumar", year: "Member", github: "https://github.com/KJaswanthKumar2108", linkedin: "https://www.linkedin.com/in/jaswanth-kumar-kondameeda" }
     ]
   },
   {
