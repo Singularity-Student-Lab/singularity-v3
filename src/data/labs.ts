@@ -146,9 +146,9 @@ export const labs: Lab[] = [
     ],
     members: [
       { name: "Ayush Agnihotri", year: "Member", github: "https://github.com/ayushagnihotrii", linkedin: "https://www.linkedin.com/in/ayush-agnihotri-b3719b380" },
-      { name: "Tanishq Yadav", year: "Member" },
-      { name: "Ishan Jha", year: "Member" },
-      { name: "Yugal Sunil Patil", year: "Member" }
+      { name: "Tanishq Yadav", year: "Member", linkedin: "https://www.linkedin.com/in/tanishq-yadav-a5367636a/" },
+      { name: "Yugal Sunil Patil", year: "Member" },
+      { name: "Zen", year: "Member", linkedin: "https://www.linkedin.com/in/zen-needs-a-job-6aa899305/" }
     ]
   },
   {
