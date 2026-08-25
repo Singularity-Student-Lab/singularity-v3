@@ -91,7 +91,7 @@ export const labs: Lab[] = [
       { name: "SEMBETI SAI PUJITH", year: "Member", github: "https://github.com/sembetisaipujith", linkedin: "https://www.linkedin.com/in/sai-pujith-sembeti-a305863b1" },
       { name: "Jaswanth Kumar", year: "Member", github: "https://github.com/KJaswanthKumar2108", linkedin: "https://www.linkedin.com/in/jaswanth-kumar-kondameeda" },
       { name: "Tejaswini", year: "Member", github: "https://github.com/codemaniac-debug", linkedin: "https://www.linkedin.com/in/sri-tejaswini-golakoti-07694b271/" },
-      { name: "Jaswanth Kumar", year: "Member", github: "https://github.com/jyoshnapilli28-ctrl", linkedin: "https://www.linkedin.com/in/jyoshna-pilli-694aa23a9?utm_source=share_via&utm_content=profile&utm_medium=member_android" }
+      { name: "Jyoshna Pilli", year: "Member", github: "https://github.com/jyoshnapilli28-ctrl", linkedin: "https://www.linkedin.com/in/jyoshna-pilli-694aa23a9?utm_source=share_via&utm_content=profile&utm_medium=member_android" }
     ]
   },
   {
